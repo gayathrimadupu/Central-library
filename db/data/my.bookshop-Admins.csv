@@ -1,0 +1,11 @@
+ID,username,password,total_books,active_loans
+1,user1,password123,25,10
+2,user2,securepass,15,5
+3,user3,123456,30,8
+4,user4,mypassword,20,12
+5,user5,pass1234,18,3
+6,user6,securepwd,22,6
+7,user7,password789,28,9
+8,user8,examplepass,16,4
+9,user9,test123,23,7
+10,user10,password321,19,11

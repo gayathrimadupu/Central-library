@@ -1,0 +1,58 @@
+<mvc:View
+    controllerName="com.app.library.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+>
+    <!-- <Page id="page" title="{i18n>title}"> -->
+    <Page
+        id="_IDGenPage1"
+        title="Central Library System Login"
+    >
+        <form:SimpleForm id ="simpleform" layout="ResponsiveGridLayout" class="form">
+            <form:content >
+                <VBox
+                    id="vBox01"
+                    alignItems="Center"
+                >
+                    <VBox
+                        id="_IDGenVBox1"
+                        class="sapUiSmallMargin"
+                    >
+                        <Label
+                            id="_IDGenLabel1"
+                            text="Username"
+                        />
+                        <Input
+                            id="usernameInput"
+                            placeholder="Enter your username"
+                            width="100%"
+                        />
+                        <Label
+                            id="_IDGenLabel2"
+                            text="Password"
+                        />
+                        <Input
+                            id="passwordInput"
+                            type="Password"
+                            placeholder="Enter your password"
+                            width="100%"
+                        />
+                        <Button
+                            id="_IDGenButton1"
+                            text="Login"
+                            press="onLogin"
+                        />
+                        <Button
+                            id="_IDGenButton2"
+                            text="Signup"
+                            press="onsignup"
+                        />
+                    </VBox>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+    </Page>
+</mvc:View>

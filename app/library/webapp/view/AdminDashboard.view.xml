@@ -1,0 +1,261 @@
+<mvc:View
+xmlns:form="sap.ui.layout.form"
+    controllerName="com.app.library.controller.AdminDashboard"
+     xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+     xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    
+    <Page
+        id="_IDGenPage1"
+        title="Admin Dashboard"
+    >
+ 
+        <Title id="_IDGenTitle1" text="My Available book Stock" />
+           <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" >
+                    <HBox
+                        id="idFilterHLayout"
+                        alignContent="SpaceAround"
+                        width="100vw"
+                    >
+                        <!-- for the search input and label ,to search /to access filters in it  -->
+
+                        <!-- <VBox
+                            id="idISBNFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idFISBNFilterLabel"
+                                text="ISBN  :"
+                            />
+                            <MultiInput
+                                id="idISBNFilterValue"
+                                value=""
+                            />
+                        </VBox> -->
+                        <VBox
+                            id="idtitleFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idtitleFilterLabel"
+                                text="title:"
+                            />
+                            <MultiInput
+                                id="idtitleFilterValue"
+                                value=""
+                            />
+                        </VBox>
+                        <VBox
+                            id="idauthorFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idauthorFilterLabel"
+                                text="author:"
+                            />
+                            <MultiInput
+                                id="idauthorFilterValue"
+                                value=""
+                            />
+                        </VBox>
+                        <!-- <VBox
+                            id="idquantityFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idquantityFilterLabel"
+                                text="quantity:"
+                            />
+                            <MultiInput
+                                id="idquantityFilterValue"
+                                value=""
+                            />
+                        </VBox> -->
+                        <VBox
+                            id="idgenreFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idgenreFilterLabel"
+                                text="genre:"
+                            />
+                            <MultiInput
+                                id="idgenreFilterValue"
+                                value=""
+                            />
+                        </VBox>
+                        <!-- <VBox
+                            id="idavailabilityFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idavailabilityFilterLabel"
+                                text="availability:"
+                            />
+                            <MultiInput
+                                id="idavailabilityFilterValue"
+                                value=""
+                            />
+                        </VBox> -->
+                        <!-- <VBox
+                            id="idbarcodeFilter"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idbarcodeFilterLabel"
+                                text="barcode :"
+                            />
+                            <MultiInput
+                                id="idbarcodeFilterValue"
+                                value=""
+                            />
+                        </VBox> -->
+
+                        <!-- button which is clickable  -->
+                        <VBox
+                            id="idGoButton"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idGoButtonLabel"
+                                text=""
+                            />
+                            <Button
+                                id="idGoButtonValue"
+                                text="Go"
+                                type="Emphasized"
+                                press="onGoPress"
+                            />
+                        </VBox>
+                        <!-- another button to clear -->
+                        <VBox
+                            id="idClearButton"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idClearButtonLabel"
+                                text=""
+                            />
+                            <Button
+                                id="idClearButtonValue"
+                                text="Clear"
+                                type="Emphasized"
+                                press="onClearFilterPress"
+                            />
+                        </VBox>
+                    </HBox>
+                    </f:DynamicPageHeader>
+        <Table
+            id="idBooksTable"
+            mode="MultiSelect"
+            alternateRowColors="true"
+            items="{path: '/Books', parameters :{
+                $count : true
+            }}"
+            selectionChange="onSelectBook"
+        >
+            <headerToolbar>
+                <OverflowToolbar id="idBookTableHeader">
+                    <Title
+                        id="idTableHeaderISBN"
+                        text="{/Books/$count} Books"
+                    />
+                    <ToolbarSpacer id="idTableHeaderSpacer" />
+                    <Button
+                        id="idBtnCreate"
+                        icon="sap-icon://add"
+                        tooltip="Create Book"
+                        type="Success"
+                        press="onCreateBtnPress"
+                    />
+                    <Button
+                            id="idBtnDelete"
+                            icon="sap-icon://delete"
+                            tooltip="Delete Book"
+                            type="Negative"
+                            press="DeleteBook"
+                        />
+                        <Button
+                            id="idBtnEdit"
+                            icon="sap-icon://edit"
+                            tooltip="Edit Book"
+                            type="Emphasized"
+                            press="EditBook"
+                        />
+                    <Button
+                        id="BtnCreate"
+                        class="loanButton"
+                        tooltip="Active loans"
+                        type="Success"
+                         text="Check Active Loans"
+                        press="onCreateActiveloans"
+                    />
+                     
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="idISBNCol">
+                    <Title
+                        id="idISBNColISBN"
+                        text="ISBN"
+                    />
+                </Column>
+                <Column id="idtitleCol">
+                    <Title
+                        id="idtitleColISBN"
+                        text="title"
+                    />
+                </Column>
+
+                <Column id="idauthorCol">
+                    <Title
+                        id="idauthorColISBN"
+                        text="author"
+                    />
+                </Column>
+                <Column id="idquantityCol">
+                    <Title
+                        id="idquantityColISBN"
+                        text="quantity"
+                    />
+                </Column>
+                <Column id="idgenreCol">
+                    <Title id="idgenreColgenre"
+                       
+                        text="genre"
+                    />
+                </Column>
+                <Column id="idavailabilitycol">
+                    <Title id="idavailabilityColavailability"
+                        
+                        text="availability"
+                    />
+                </Column>
+                <!-- <Column id="_IDGenColumn2">
+                    <Title
+                        id="_IDGenISBN2"
+                        text="barcode"
+                    />
+                </Column> -->
+            </columns>
+            <items>
+                <ColumnListItem id="idBooksTableColListItem">
+                    <cells>
+                        <Text id="_IDGenText1" text="{ISBN}" />
+                        <Text id="_IDGenText2" text="{title}" />
+                        <Text id="_IDGenText3" text="{author}" />
+                        <Text id="_IDGenText4" text="{quantity}" />
+                        <Text id="_IDGenText5" text="{genre}" />
+                        <Text id="_IDGenText6" text="{availability}" />
+                        <!-- <Text id="_IDGenText7" text="{barcode}" /> -->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+    </Page>
+</mvc:View>

@@ -1,0 +1,11 @@
+ISBN,title,author,quantity,genre,availability,barcode,users_ID
+978-0141033570,1984,George Orwell,5,Fiction,Available,1234567890123,1
+978-0061120084,To Kill a Mockingbird,Harper Lee,3,Fiction,Available,2345678901234,2
+978-0545010221,Harry Potter and the Sorcerer's Stone,J.K. Rowling,8,Fantasy,Available,3456789012345,3
+978-0385504201,The Da Vinci Code,Dan Brown,6,Mystery,Available,4567890123456,4
+978-0062315007,The Fault in Our Stars,John Green,4,Romance,Available,5678901234567,5
+978-1455586691,The Girl on the Train,Paula Hawkins,2,Thriller,Available,6789012345678,6
+978-0307277672,The Catcher in the Rye,J.D. Salinger,7,Fiction,Available,7890123456789,7
+978-0316015844,Twilight,Stephenie Meyer,9,Fantasy,Available,8901234567890,8
+978-0385514231,Angels & Demons,Dan Brown,5,Mystery,Available,9012345678901,9
+978-0316769174,The Bell Jar,Sylvia Plath,1,Drama,Available,0123456789012,10

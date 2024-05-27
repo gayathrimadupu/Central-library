@@ -1,0 +1,95 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <Dialog
+        id="idActiveLoansDailog"
+        resizable="true"
+        draggable="true"
+        contentWidth="85%"
+        contentHeight="85%"
+        title="Active Loans"
+    >
+        <content>
+            <Table
+                id="idLoanTable"
+                inset="false"
+                items="{/Activeloans}"
+            >
+                <headerToolbar>
+                    <Toolbar id="idToolBar">
+                        <Title
+                            id="idTableHeader"
+                            text="All Loans"
+                        />
+                        <ToolbarSpacer id="idSpacer" />
+                        <Button
+                            id="idAddButton"
+                            text="Add"
+                            press="onAddNewLoanPress"
+                            tooltip ="clickhere to add new loan"
+                        />
+                        <Button
+                            id="idCloseBTN"
+                            text="close"
+                            press="onCloseActiveLoans"
+                             tooltip ="close active loan"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                
+                    <Column id="idLoanTablecol1">
+                        <Text
+                            id="idUserId"
+                            text="User Id"
+                        />
+                    </Column>
+                    <Column id="_IDGenColumn1" >
+                        <Text id="_IDGenText1"
+                            
+                            text="Issue Date"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol3">
+                        <Text
+                            id="idBookTitle"
+                            text="BookTitle"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol4">
+                        <Text
+                            id="idDueDate"
+                            text="Due Date"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idLoanTableColListItems">
+                        <cells>
+                        <Text id="_IDGenText2"
+                               
+                                text="{userId/ID}"
+                            />
+                            <Text id="_IDGenText3"
+                               
+                                text="{issueDate}"
+                            />
+                            <Text id="_IDGenText4"
+                               
+                                text="{bookId/title}"
+                            />
+                            
+                            <Text id="_IDGenText5"
+                                
+                                text="{dueDate}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
+ 

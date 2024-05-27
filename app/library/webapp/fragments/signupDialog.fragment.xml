@@ -1,0 +1,88 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+<Dialog
+        id="idCreatesignupDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="signup"
+    >
+    <beginButton>
+            <Button
+                id="idCreateAccount"
+                text="Create Account"
+                press="onCreateAccount"
+                type="Success"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelButton"
+                text="Cancel"
+                press="onCloseDialog"
+                type="Negative"
+            />
+        </endButton>
+        <content>
+            <form:SimpleForm
+                id="idsignupForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <Label id="_IDGenLabel1"
+                   
+                    text="UserName"
+                />
+                <Input id="_IDGenInput1" 
+                   
+                    value="{localModel>/ username1}"
+                />
+                <Label id="_IDGenLabel2"
+                    
+                    text="Password"
+                />
+                <Input id="_IDGenInput2" 
+                    
+                    value="{localModel>/password1}"
+                />
+                <Label id="_IDGenLabel3" 
+                    
+                    text="Confirm Password "
+                />
+                <Input id="_IDGenInput3" 
+                    
+                    value="{localModel>/confirmpassword1}"
+                />
+            
+                
+                
+                
+            </form:SimpleForm>
+        </content>
+
+
+
+
+
+
+
+
+
+  </Dialog>  
+</core:FragmentDefinition>

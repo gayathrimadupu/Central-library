@@ -1,0 +1,11 @@
+ID,username,password,email,Borrowedbooks,Returndates,Notifications
+1,user1,password1,user1@example.com,book1,2024-05-20,true
+2,user2,password2,user2@example.com,book2;book3,2024-05-22;2024-05-25,false
+3,user3,password3,user3@example.com,,,
+4,user4,password4,user4@example.com,book4,2024-05-24,true
+5,user5,password5,user5@example.com,book5,2024-05-26,false
+6,user6,password6,user6@example.com,book6;book7,2024-05-28;2024-05-30,true
+7,user7,password7,user7@example.com,,,
+8,user8,password8,user8@example.com,book8,2024-06-01,false
+9,user9,password9,user9@example.com,book9,2024-06-03,true
+10,user10,password10,user10@example.com,book10;book11,2024-06-05;2024-06-08,false
