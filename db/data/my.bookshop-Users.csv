@@ -1,6 +1,6 @@
-ID,username,password,email,Borrowedbooks,Returndates,Notifications
-1,user1,password1,user1@example.com,book1,2024-05-20,true
-2,user2,password2,user2@example.com,book2;book3,2024-05-22;2024-05-25,false
+ID,username,password,email,Borrowedbooks,Returndates,Notifications,activeloans_ID
+1,user1,password1,user1@example.com,book1,2024-05-20,true,1e275b40-1d8e-11ef-b7be-325096b39f47
+2,user2,password2,user2@example.com,book2;book3,2024-05-22;2024-05-25,false,37ef0b07-19cc-4949-9c40-d68c282a3acf
 3,user3,password3,user3@example.com,,,
 4,user4,password4,user4@example.com,book4,2024-05-24,true
 5,user5,password5,user5@example.com,book5,2024-05-26,false

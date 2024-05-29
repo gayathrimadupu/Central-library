@@ -3,7 +3,7 @@
     xmlns:form="sap.ui.layout.form"
     xmlns="sap.m"
 >
-    <!--  -->
+    
     <Dialog
         id="idNewLoanDialog"
         resizable="true"

@@ -1,27 +1,26 @@
 sap.ui.define([
-   
+    "./BaseController",
     "sap/ui/core/mvc/Controller",
    
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel"
     
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageToast) {
+    function (BaseController, Controller, MessageToast, JSONModel) {
         "use strict";
     
-        return Controller.extend("library.controller.Login", {
-            // onInit: function () {
-            //     const oLocalModel = new JSONModel({
-                   
-            //         username1: "",
-            //         password1: "",
-            //         confirmpassword1: "",
-            //     });
-            //     this.getView().setModel(oLocalModel, "localModel");
-            //     // this.getRouter().attachRoutePatternMatched(this.onBooksListLoad, this);
-            // },
+        return BaseController.extend("library.controller.Login", {
+            onInit: function () {
+                const oLocalModel = new JSONModel({
+                    username1: "",
+                    password1: "",
+                    confirmpassword1: "",
+                });
+                this.getView().setModel(oLocalModel, "localModel");
+            },
             onLogin: function () {
                 var username = this.byId("usernameInput").getValue();
                 var password = this.byId("passwordInput").getValue();
@@ -61,29 +60,50 @@ sap.ui.define([
                 this.osignupDialog.open();
             },
 
-            onSignup:async function () {
-                if (!this.odialogbox) {
-                  this.odialogbox = await this.loadFragment("dialogbox");
-                }
-                this.odialogbox.open();
-              },
+            
 
 
 
             onCreateAccount: async function () {
-               
-                const oPayload = this.getView().getModel("localModel").getProperty("/"),
-                    oModel = this.getView().getModel("ModelV2");
-    
-                try {
-                    await this.createData(oModel, oPayload, "/Books");
-                    this.getView().byId("idBooksTable").getBinding("items").refresh();
-                    this.oCreateBooksDialog.close();
-                } catch (error) {
-                    this.oCreateBooksDialog.close();
-                    MessageBox.error("Some technical Issue");
-                }
-            }
+                    var username = this.byId("_IDGenInput1").getValue();
+                    var password = this.byId("_IDGenInput2").getValue();
+                    var confirmPassword = this.byId("_IDGenInput3").getValue();
+                
+                    if (!username || !password || !confirmPassword) {
+                        MessageToast.show("Please fill in all fields.");
+                        return;
+                    }
+                
+                    if (password !== confirmPassword) {
+                        MessageToast.show("Passwords do not match. Please try again.");
+                        return;
+                    }
+                
+                    // Here you can add logic to create the account using a service or model
+                
+                    // For example, you can use the local model to store user data temporarily
+                    const oLocalModel = this.getView().getModel("localModel");
+                    oLocalModel.setProperty("/username1", username);
+                    oLocalModel.setProperty("/password1", password);
+                    oLocalModel.setProperty("/confirmpassword1", confirmPassword);
+                
+                    // Close the signup dialog after account creation
+                    this.osignupDialog.close();
+                
+                    // Show a success message or navigate to another view
+                    MessageToast.show("Account created successfully!");
+                },
+
+
+               onCloseDialog: function () {
+                    if (this.osignupDialog) {
+                        this.osignupDialog.close();
+                    }
+                },
+
+                
+                
+            
 
         });
     });

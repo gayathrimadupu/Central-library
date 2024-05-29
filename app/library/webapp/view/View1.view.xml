@@ -47,8 +47,8 @@
                         />
                         <Button
                             id="_IDGenButton2"
-                            text="Signup"
-                            press="onsignup"
+                            text="SignUp"
+                            press="onSignup"
                         />
                     </VBox>
                 </VBox>

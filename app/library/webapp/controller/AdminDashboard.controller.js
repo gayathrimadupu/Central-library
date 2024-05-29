@@ -197,6 +197,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
             }
             this.oActiveLoansDialog.open();
         },
+        
         onCloseActiveLoans: function () {
             // debugger;
             // this.byId("idActiveLoansTable").close();

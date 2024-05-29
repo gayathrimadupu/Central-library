@@ -10,12 +10,12 @@ xmlns:form="sap.ui.layout.form"
     xmlns="sap.m">
     
     <Page
-        id="_IDGenPage1"
+        id="adminGenPage1"
         title="Admin Dashboard"
     >
  
-        <Title id="_IDGenTitle1" text="My Available book Stock" />
-           <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" >
+        <Title id="adminGenTitle1" text="My Available book Stock" />
+           <f:DynamicPageHeader id="adminGenDynamicPageHeader1" >
                     <HBox
                         id="idFilterHLayout"
                         alignContent="SpaceAround"
@@ -158,13 +158,13 @@ xmlns:form="sap.ui.layout.form"
             }}"
             selectionChange="onSelectBook"
         >
-            <headerToolbar>
-                <OverflowToolbar id="idBookTableHeader">
-                    <Title
-                        id="idTableHeaderISBN"
+             <headerToolbar>
+                <OverflowToolbar id="adminGenOverflowToolbar1" >
+                    <Title id="adminGenTitle2"
+                        
                         text="{/Books/$count} Books"
                     />
-                    <ToolbarSpacer id="idTableHeaderSpacer" />
+                    <ToolbarSpacer id="adminGenToolbarSpacer1" />
                     <Button
                         id="idBtnCreate"
                         icon="sap-icon://add"
@@ -235,9 +235,9 @@ xmlns:form="sap.ui.layout.form"
                         text="availability"
                     />
                 </Column>
-                <!-- <Column id="_IDGenColumn2">
+                <!-- <Column id="adminGenColumn2">
                     <Title
-                        id="_IDGenISBN2"
+                        id="adminGenISBN2"
                         text="barcode"
                     />
                 </Column> -->
@@ -245,13 +245,13 @@ xmlns:form="sap.ui.layout.form"
             <items>
                 <ColumnListItem id="idBooksTableColListItem">
                     <cells>
-                        <Text id="_IDGenText1" text="{ISBN}" />
-                        <Text id="_IDGenText2" text="{title}" />
-                        <Text id="_IDGenText3" text="{author}" />
-                        <Text id="_IDGenText4" text="{quantity}" />
-                        <Text id="_IDGenText5" text="{genre}" />
-                        <Text id="_IDGenText6" text="{availability}" />
-                        <!-- <Text id="_IDGenText7" text="{barcode}" /> -->
+                        <Text id="adminGenText1" text="{ISBN}" />
+                        <Text id="adminGenText2" text="{title}" />
+                        <Text id="adminGenText3" text="{author}" />
+                        <Text id="adminGenText4" text="{quantity}" />
+                        <Text id="adminGenText5" text="{genre}" />
+                        <Text id="adminGenText6" text="{availability}" />
+                        <!-- <Text id="adminGenText7" text="{barcode}" /> -->
                     </cells>
                 </ColumnListItem>
             </items>

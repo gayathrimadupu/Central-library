@@ -11,8 +11,8 @@
         title="signup"
     >
     <beginButton>
-            <Button
-                id="idCreateAccount"
+            <Button id="idBTNCreate"
+               
                 text="Create Account"
                 press="onCreateAccount"
                 type="Success"
@@ -45,29 +45,29 @@
                 columnsM="1"
                 singleContainerFullSize="false"
             >
-                <Label id="_IDGenLabel1"
+                <Label id="username"
                    
                     text="UserName"
                 />
                 <Input id="_IDGenInput1" 
                    
-                    value="{localModel>/ username1}"
+                    value=""
                 />
-                <Label id="_IDGenLabel2"
+                <Label id="password"
                     
                     text="Password"
                 />
                 <Input id="_IDGenInput2" 
                     
-                    value="{localModel>/password1}"
+                    value=""
                 />
-                <Label id="_IDGenLabel3" 
+                <Label id="confirmpsswrd" 
                     
                     text="Confirm Password "
                 />
                 <Input id="_IDGenInput3" 
                     
-                    value="{localModel>/confirmpassword1}"
+                    value=""
                 />
             
                 

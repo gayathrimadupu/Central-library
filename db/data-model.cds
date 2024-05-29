@@ -19,6 +19,7 @@ entity Users {
       Borrowedbooks : Integer;
       Returndates   : Date;
       Notifications : Integer;
+      activeloans : Association to one Activeloans;
 }
 
 entity Admins {
@@ -32,6 +33,7 @@ entity Admins {
 
 entity Activeloans
  {
+  key ID : UUID;
   bookId    : Association to Books;
   userId    : Association to Users;
   issueDate : Date;
