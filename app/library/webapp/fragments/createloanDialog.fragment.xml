@@ -34,11 +34,11 @@
             >
                 <Label
                     id="idNewLoanUserNameLabel"
-                    text="User Id"
+                    text="User Name"
                 />
                 <Input
                     id="idNewLoanUserNameValue"
-                    value="{newLoanModel>/userId/ID}"
+                    value="{newLoanModel>/userId/username}"
                 />
                 <Label
                     id="idNewLoanUserIDLabel"

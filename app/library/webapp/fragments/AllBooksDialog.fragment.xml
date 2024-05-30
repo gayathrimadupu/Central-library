@@ -14,25 +14,20 @@
         resizable="true"
     >
         <content>
-            <Page
-                id="userPage"
-                title="User Dashboard"
+            <Title
+                id="availid"
+                text="Available books"
+            />
+            <f:DynamicPageHeader
+                id="idDynamicPageHeader"
+                pinnable="true"
             >
-                
-                    <Title
-                        id="availid"
-                        text="My Available books"
-                    />
-                    <f:DynamicPageHeader
-                        id="idDynamicPageHeader"
-                        pinnable="true"
-                    >
-                        <HBox
-                            id="idFilterHLayout"
-                            alignContent="SpaceAround"
-                            width="500vw"
-                        >
-                            <VBox
+                <HBox
+                    id="idFilterHLayout"
+                    alignContent="SpaceAround"
+                    width="500vw"
+                >
+                    <!-- <VBox
                                 id="idtitleFilter"
                                 class="sapUiSmallMarginEnd"
                             >
@@ -70,8 +65,8 @@
                                     id="idgenreFilterValue"
                                     value=""
                                 />
-                            </VBox>
-                            <!-- <VBox
+                            </VBox> -->
+                    <!-- <VBox
                                 id="idGoButton"
                                 class="sapUiSmallMarginEnd"
                             >
@@ -86,7 +81,7 @@
                                     press="onGoPress"
                                 />
                             </VBox> -->
-                            <!-- <VBox
+                    <!-- <VBox
                                 id="idClearFilterButton"
                                 class="sapUiSmallMarginEnd"
                             >
@@ -101,109 +96,130 @@
                                     press="onClearFilterPress"
                                 />
                             </VBox> -->
-                            <HBox id="idButtonBox" alignItems="Center" justifyContent="SpaceAround">
+                    <!-- <HBox id="idButtonBox" alignItems="Center" justifyContent="SpaceAround">
                         <Button id="idGoButtonValue" text="Go" type="Emphasized" press="onGoPress" />
                         <Button id="idClearFilterButtonValue" text="Clear Filter" type="Emphasized" press="onClearFilterPress" />
-                    </HBox>
-                        </HBox>
-                    </f:DynamicPageHeader>
-                    <Table
-                        id="idBooksTable"
-                        mode="SingleSelectMaster"
-                        alternateRowColors="true"
-                        items="{path: '/Books', parameters: { $count: true }}"
-                        selectionChange="onSelectBook"
-                    >
-                        <headerToolbar>
-                            <OverflowToolbar id="idBookTableHeader">
-                                <Title
-                                    id="idTableHeaderISBN"
-                                    text="{/Books/$count} Books"
-                                />
-                                <ToolbarSpacer id="idTableHeaderSpacer" />
-                            </OverflowToolbar>
-                        </headerToolbar>
-                        <columns>
-                            <Column id="idISBNCol">
-                                <Title
-                                    id="idISBNColISBN"
-                                    text="ISBN"
-                                />
-                            </Column>
-                            <Column id="idtitleCol">
-                                <Title
-                                    id="idtitleColISBN"
-                                    text="title"
-                                />
-                            </Column>
-                            <Column id="idauthorCol">
-                                <Title
-                                    id="idauthorColISBN"
-                                    text="author"
-                                />
-                            </Column>
-                            <Column id="idquantityCol">
-                                <Title
-                                    id="idquantityColISBN"
-                                    text="quantity"
-                                />
-                            </Column>
-                            <Column id="idgenreCol">
-                                <Title
-                                    id="idgenreColISBN"
-                                    text="genre"
-                                />
-                            </Column>
-                            <Column id="_IDGenColumn1">
-                                <Title
-                                    id="_IDGenISBN1"
-                                    text="availability"
-                                />
-                            </Column>
-                            <Column id="_IDGenColumn2">
-                                <Title
-                                    id="_IDGenISBN2"
-                                    text="barcode"
-                                />
-                            </Column>
-                        </columns>
-                        <items>
-                            <ColumnListItem id="idBooksTableColListItem">
-                                <cells>
-                                    <Text
-                                        id="_IDGenText8"
-                                        text="{ISBN}"
-                                    />
-                                    <Text
-                                        id="_IDGenText9"
-                                        text="{title}"
-                                    />
-                                    <Text
-                                        id="_IDGenText3"
-                                        text="{author}"
-                                    />
-                                    <Text
-                                        id="_IDGenText4"
-                                        text="{quantity}"
-                                    />
-                                    <Text
-                                        id="_IDGenText5"
-                                        text="{genre}"
-                                    />
-                                    <Text
-                                        id="_IDGenText6"
-                                        text="{availability}"
-                                    />
-                                    <Text
-                                        id="_IDGenText7"
-                                        text="{barcode}"
-                                    />
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-                </Page>
-        
+                    </HBox> -->
+                </HBox>
+            </f:DynamicPageHeader>
+            <Table
+                id="idBooksTable"
+                 mode="MultiSelect"
+                alternateRowColors="true"
+                items="{path: '/Books', parameters: { $count: true }}"
+                selectionChange="onSelectBook"
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="idBookTableHeader">
+                        <Title
+                            id="idTableHeaderISBN"
+                            text="{/Books/$count} Books"
+                        />
+                        <ToolbarSpacer id="idTableHeaderSpacer" />
+                        <Button
+                            id="idReserveBookButton"
+                            text="Reserve Book"
+                           
+                            press="onReserveBookPress"
+                            type="Success"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="idISBNCol">
+                        <Title
+                            id="idISBNColISBN"
+                            text="ISBN"
+                        />
+                    </Column>
+                    <Column id="idtitleCol">
+                        <Title
+                            id="idtitleColISBN"
+                            text="Title"
+                        />
+                    </Column>
+                    <Column id="idauthorCol">
+                        <Title
+                            id="idauthorColISBN"
+                            text="Author"
+                        />
+                    </Column>
+                    <Column id="idquantityCol">
+                        <Title
+                            id="idquantityColISBN"
+                            text="Available Quantity"
+                        />
+                    </Column>
+                    <Column id="idgenreCol">
+                        <Title
+                            id="idgenreColISBN"
+                            text="Genre"
+                        />
+                    </Column>
+                    <Column id="idStatusCol">
+                        <Title
+                            id="idStatusColISBN"
+                            text="Status"
+                        />
+                    </Column>
+                    <!-- <Column id="_IDGenColumn1">
+                        <Title
+                            id="_IDGenISBN1"
+                            text="availability"
+                        />
+                    </Column> -->
+                    <!-- <Column id="_IDGenColumn2">
+                        <Title
+                            id="_IDGenISBN2"
+                            text="barcode"
+                        />
+                    </Column> -->
+                </columns>
+                <items>
+                    <ColumnListItem id="idBooksTableColListItem">
+                        <cells>
+                            <Text
+                                id="_IDGenText8"
+                                text="{ISBN}"
+                            />
+                            <Text
+                                id="_IDGenText9"
+                                text="{title}"
+                            />
+                            <Text
+                                id="_IDGenText3"
+                                text="{author}"
+                            />
+                            <Text
+                                id="_IDGenText4"
+                                text="{quantity}"
+                            />
+                            <Text
+                                id="_IDGenText5"
+                                text="{genre}"
+                            />
+                             <Text
+                                id="_IDGenText6"
+                                text="{status}"
+                            />
+                            <!-- <Text
+                                id="_IDGenText6"
+                                text="{availability}"
+                            /> -->
+                            <!-- <Text
+                                id="_IDGenText7"
+                                text="{barcode}"
+                            /> -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
         </content>
+        <beginButton>
+            <Button
+                text="Close"
+                press="onCloseDialogPress"
+            />
+        </beginButton>
     </Dialog>
 </core:FragmentDefinition>

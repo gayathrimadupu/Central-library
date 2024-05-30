@@ -6,8 +6,9 @@ sap.ui.define([
     "sap/m/Token",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ], 
-function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
+function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,MessageToast) {
     "use strict";
 
 
@@ -27,7 +28,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
                     title:""
                 },
                 userId: {
-                    ID:""
+                    username:""
                 },
 
                 issueDate: "",
@@ -157,6 +158,36 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
 
             })
         },
+        onIssueBook:async function() {
+            debugger
+            var oView1 = this.getView();
+            var sUserID = oView1.byId("idUserIDInput").getValue();
+            var sUsername = oView1.byId("idUserNameInput").getValue();
+            var sISBN = oView1.byId("idISBNIDInput").getValue();
+            var sDueDate = oView1.byId("idDueDateInput").getValue();
+             var oData1 = oView1.getModel("ActiveloanModel").getProperty("/");
+             oData1.user.ID = sUserID;
+             oData1.user.username = sUsername;
+             oData1.user.books.ISBN = sISBN;
+             oData1.dueDate = sDueDate;
+ 
+            var oModel1 = this.getView().getModel("ModelV2");
+                try{
+                    await this.createIssue(oModel1, oData1, "/Activeloans");
+                    this.getView().byId("idLoanTable").getBinding("items").refresh();
+                    this.oCreateBookDialog.close();
+                }
+                catch(error) {
+                    this.oCreateBookDialog.close();
+                   MessageToast.show("Some technical Issue");
+                }
+       
+        },
+    onCloseIssueDialog: function() {
+        this.getView().byId("idIssueBookDialog").close();
+    },
+   
+
         setHeaderContext: function() {
             var oView = this.getView();
             oView.byId("Bookstitle").setBindingContext(
@@ -211,6 +242,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
             debugger
             if (!this.oNewLoanDailog) {
                 this.oNewLoanDailog = await this.loadFragment("createloanDialog")
+                this.oActiveLoansDialog = await this.loadFragment("ActiveLoansDialog")
             }
             this.oNewLoanDailog.open()
         },
@@ -220,6 +252,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
             }
         },
         onSaveNewLoan: function () {
+            debugger
             var oContext = this.getView().byId("idLoanTable").getBinding("items")
             var oNewLoan = this.getView().getModel("newLoanModel").getData();
             oContext.create(oNewLoan, {
@@ -232,6 +265,24 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
             });
             this.oNewLoanDailog.close()
 
+        },
+        OnCloseLOanPress:function(){
+                debugger
+                const oAdminView = this.getView(),
+                    oSelected = oAdminView.byId("idLoanTable").getSelectedItem()
+                if (oSelected) {
+                    // var oUser = oSelected.getBindingContext().getObject().user.userName;
+                    oSelected.getBindingContext().delete("$auto").then(function () {
+                        MessageToast.show(" SuccessFully Deleted");
+                    },
+                        function (oError) {
+                            MessageToast.show("Deletion Error: ", oError);
+                        });
+                    this.getView().byId("idLoanTable").getBinding("items").refresh();
+
+                } else {
+                    MessageToast.show("Please Select a user to close the loan");
+                }
         },
 
 
@@ -270,7 +321,8 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
             }
 
             this.oCreateBooksDialog.open();
-        }
+        },
+        
         
     });
 });

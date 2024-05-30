@@ -19,6 +19,8 @@
                 id="idLoanTable"
                 inset="false"
                 items="{/Activeloans}"
+                mode="MultiSelect"
+                multiSelectMode="SelectAll"
             >
                 <headerToolbar>
                     <Toolbar id="idToolBar">
@@ -46,7 +48,7 @@
                     <Column id="idLoanTablecol1">
                         <Text
                             id="idUserId"
-                            text="User Id"
+                            text="User Name"
                         />
                     </Column>
                     <Column id="_IDGenColumn1" >
@@ -67,13 +69,19 @@
                             text="Due Date"
                         />
                     </Column>
+                     <Column id="idLoanTablecol5">
+                        <Text
+                            id="idClearLoanBTN"
+                            text="Clear Loan"
+                        />
+                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem id="idLoanTableColListItems">
                         <cells>
                         <Text id="_IDGenText2"
                                
-                                text="{userId/ID}"
+                                text="{userId/username}"
                             />
                             <Text id="_IDGenText3"
                                
@@ -87,6 +95,11 @@
                             <Text id="_IDGenText5"
                                 
                                 text="{dueDate}"
+                            />
+                            <Button id="idCloseLoanBTN" 
+                            text="Close Loan"
+                            type="Reject"
+                            press="OnCloseLOanPress"
                             />
                         </cells>
                     </ColumnListItem>

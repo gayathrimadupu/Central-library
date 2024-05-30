@@ -85,22 +85,22 @@
                     
                     value="{localModel>/genre}"
                 />
-                <Label id="_IDGenLabel6"
+                <!-- <Label id="_IDGenLabel6"
                    
                     text="Bookavailability"
                 />
                 <Input id="_IDGenInput6"
                    
                     value="{localModel>/availability}"
-                />
-                <Label id="_IDGenLabel7"
+                /> -->
+                <!-- <Label id="_IDGenLabel7"
                    
                     text="Bookbarcode"
                 />
                 <Input id="_IDGenInput7"
                    
                     value="{localModel>/barcode}"
-                />
+                /> -->
                 
             </form:SimpleForm>
         </content>

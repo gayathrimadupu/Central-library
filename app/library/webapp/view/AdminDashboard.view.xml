@@ -14,7 +14,7 @@ xmlns:form="sap.ui.layout.form"
         title="Admin Dashboard"
     >
  
-        <Title id="adminGenTitle1" text="My Available book Stock" />
+        <Title id="adminGenTitle1" text="Available book Stock" />
            <f:DynamicPageHeader id="adminGenDynamicPageHeader1" >
                     <HBox
                         id="idFilterHLayout"
@@ -194,6 +194,12 @@ xmlns:form="sap.ui.layout.form"
                          text="Check Active Loans"
                         press="onCreateActiveloans"
                     />
+                    <Button
+                        id="idIssueBookStock"
+                        text="Issue Books"
+                        type="Success"
+                        press="onAddNewLoanPress"
+                    />
                      
                 </OverflowToolbar>
             </headerToolbar>
@@ -207,32 +213,32 @@ xmlns:form="sap.ui.layout.form"
                 <Column id="idtitleCol">
                     <Title
                         id="idtitleColISBN"
-                        text="title"
+                        text="Title"
                     />
                 </Column>
 
                 <Column id="idauthorCol">
                     <Title
                         id="idauthorColISBN"
-                        text="author"
+                        text="Author"
                     />
                 </Column>
                 <Column id="idquantityCol">
                     <Title
                         id="idquantityColISBN"
-                        text="quantity"
+                        text="Quantity"
                     />
                 </Column>
                 <Column id="idgenreCol">
                     <Title id="idgenreColgenre"
                        
-                        text="genre"
+                        text="Genre"
                     />
                 </Column>
                 <Column id="idavailabilitycol">
                     <Title id="idavailabilityColavailability"
                         
-                        text="availability"
+                        text="Available Quantity"
                     />
                 </Column>
                 <!-- <Column id="adminGenColumn2">

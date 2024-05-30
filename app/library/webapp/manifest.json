@@ -144,7 +144,7 @@
       },
       {
           "name": "RouteUserDashboard",
-          "pattern": "UserDashboard",
+          "pattern": "UserDashboard/{id}",
           "target": [
             "TargetUserDashboard"
           ]

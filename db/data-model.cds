@@ -1,4 +1,5 @@
 namespace my.bookshop;
+using {cuid} from '@sap/cds/common';
 
 entity Books  {
   key ISBN          : String;
@@ -8,7 +9,9 @@ entity Books  {
       genre        : String;
       availability : String;
       barcode      : String;
-      Users : Association to many Users;
+      status : String;
+      // Users : Composition of many Users on Users.Books=$self;
+      activeloans:Association to  many Activeloans on activeloans.bookId=$self;
 }
 
 entity Users {
@@ -19,45 +22,15 @@ entity Users {
       Borrowedbooks : Integer;
       Returndates   : Date;
       Notifications : Integer;
-      activeloans : Association to one Activeloans;
+      // activeloans:Association to Activeloans;
+      usertype : String;
+      Bookloans : Association to Activeloans on Bookloans.userId =$self;
+      
 }
-
-entity Admins {
-  key ID           : Integer;
-      username     : String;
-      password     : String;
-      total_books  : Integer;
-      active_loans : Integer;
-
-}
-
-entity Activeloans
- {
-  key ID : UUID;
-  bookId    : Association to Books;
-  userId    : Association to Users;
+entity Activeloans :cuid{ 
   issueDate : Date;
-  dueDate   : Date
+  dueDate   : Date;
+  bookId    : Association to Books;
+  userId    : Association to Users
  }
 
-// entity Loans {
-//   key ID         : Integer;
-//       userID     : Integer;
-//       // Reference to Users entity
-//       bookID     : Integer;
-//       // Reference to Books entity
-//       loanDate   : DateTime;
-//       returnDate : DateTime;
-// }
-
-// entity Genres {
-//   key ID          : Integer;
-//       name        : String;
-//       description : String;
-// }
-
-// entity Library {
-//     key ID : Integer;
-//     name : String;
-//     books : composition of many Books; // Composition to represent a library having multiple books
-// }

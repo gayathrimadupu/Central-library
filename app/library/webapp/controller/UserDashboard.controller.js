@@ -5,14 +5,12 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/m/Token",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageBox",
+    "sap/m/MessageBox"
 ], function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox) {
     "use strict";
 
     return Controller.extend("com.app.library.controller.UserDashboard", {
         onInit: function () {
-            
-
             const oLocalModel = new JSONModel({
                 ISBN: "",
                 title: "", 
@@ -24,7 +22,16 @@ sap.ui.define([
             });
             
             this.getView().setModel(oLocalModel, "localModel");
-            this.getRouter().attachRoutePatternMatched(this.onBooksListLoad, this);
+            // this.getRouter().attachRoutePatternMatched(this.onBooksListLoad, this);
+            this.getRouter().attachRoutePatternMatched(this.onUserDetailsLoad, this);
+        },
+        onUserDetailsLoad: function(oEvent ){
+            const {id} = oEvent.getParameter("arguments");
+            this.ID = id;
+            // const sRouterName = oEvent.getParameter("name");
+            const oObjectPage = this.getView().byId("idObjectPageLayout");
+     
+            oObjectPage.bindElement(`/Users(${id})`);
         },
         onBooksListLoad: function () {
             this.getView().byId("idBooksTable").getBinding("items").refresh();
@@ -127,6 +134,11 @@ sap.ui.define([
             sgenreFilterLabel  = oView.byId("idgenreFilterValue").destroyTokens()
         
          },
+         onCloseDialogPress: function () {
+            if (this.oAllBooksDialog) {
+                this.oAllBooksDialog.close();
+            }
+        },
 
          onAllbooksPress: async function () {
             if (!this.oAllBooksDialog) {
@@ -134,15 +146,30 @@ sap.ui.define([
             }
             this.oAllBooksDialog.open();
         },
-        // onAllbooksPress: async function () {
-        //     if (!this.oAllBooksDialog) {
-        //         this.oAllBooksDialog = await this.loadFragment({
-        //             name: "com.app.library.fragments.AllBooksDialog"
-        //         });
-        //         this.getView().addDependent(this.oAllBooksDialog);
-        //     }
-        //     this.oAllBooksDialog.open();
-        // },
+        onReserveBookPress: function () {
+            debugger
+            MessageBox.error("Please select a book to reserve.");
+                var selectedBook = this.getView().byId("idBooksTable").getSelectedItem();
+                if (!selectedBook) {
+                    MessageBox.error("Please select a book to reserve.");
+                    return;
+                }
+     
+                var title = selectedBook.getBindingContext().getObject().title;
+                var bookStatus = selectedBook.getBindingContext().getObject().status;
+     
+                if (bookStatus === "Reserved") {
+                    
+                    MessageBox.information("The book '" + title + "' is already Reserved.");
+                } else {
+                    // Perform reservation logic here
+                    // For example, you can update the book status to 'Reserved' in the backend
+                    // Send a notification to the user about the reservation
+                    MessageBox.success("You have successfully reserved the book '" + title + "'.");
+                }
+            
+            },
+        
         onSelectBooks: function(oEvent) {
 
             const { ISBN, title, author, quantity, genre, availability, barcode } = oEvent.getSource().getSelectedItem().getBindingContext().getObject();
