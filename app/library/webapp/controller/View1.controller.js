@@ -29,6 +29,7 @@ sap.ui.define([
           username: "",
           //phonenumber:"",
           password: "",
+          confirmPassword: "",
           usertype: "member",
          
         });
@@ -44,9 +45,31 @@ sap.ui.define([
     //for Creating New User...
     onCreateAccount: async function () {
         debugger
+        var oView = this.getView();
+        var sPassword = oView.byId("_IDGenInput2").getValue();
+        var sConfirmPassword = oView.byId("_IDGenInput3").getValue();
+        console.log("Password: ", sPassword);
+        console.log("Confirm Password: ", sConfirmPassword);
+
+        if (!sPassword || !sConfirmPassword) {
+          MessageToast.show("Please fill in all fields.");
+          return;
+        }
+
+        if (sPassword !== sConfirmPassword) {
+          MessageToast.show("Passwords do not match. Please try again.");
+          return;
+        }
+        const oPayload = Object.assign({}, this.getView().getModel("oNewUserModel").getProperty("/"));
+        delete oPayload.confirmPassword; // Remove confirmPassword before sending the payload
+
         //After Creating model need to call that model and in the ui page assign that model to valueInput...
-        const oPayload = this.getView().getModel("oNewUserModel").getProperty("/"),
-            oModel = this.getView().getModel("ModelV2");
+        // const oPayload = this.getView().getModel("oNewUserModel").getProperty("/"),
+        //     oModel = this.getView().getModel("ModelV2");
+        const oModel = this.getView().getModel();
+
+        console.log("Payload: ", oPayload);
+
         try {
             await this.createData(oModel, oPayload, "/Users");
             this.osignupDialog.close();

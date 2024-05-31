@@ -61,14 +61,19 @@
                     
                     value="{oNewUserModel>/password}"
                 />
+                <Label id="confirmPassword" text="Confirm Password"/>
+                <Input id="_IDGenInput3" value="{oNewUserModel>/confirmPassword}" editable="true"/>
                 <Label
                     id="idLableusertype"
                     text="User Type"
                 />
+                 <!-- Grayed out and non-editable -->
                 <Input
                     id="idInputusertype"
                     value="{oNewUserModel>/usertype}"
-                />
+                    editable="false"/> 
+                   
+                
             
                 
                 
