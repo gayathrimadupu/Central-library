@@ -15,7 +15,7 @@ entity Books  {
 }
 
 entity Users {
-  key ID            : String;
+  key ID            : UUID;
       username      : String;
       password      : String;
       email         : String;

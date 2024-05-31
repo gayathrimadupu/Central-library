@@ -51,7 +51,7 @@
                 />
                 <Input id="_IDGenInput1" 
                    
-                    value=""
+                    value="{oNewUserModel>/username}"
                 />
                 <Label id="password"
                     
@@ -59,15 +59,15 @@
                 />
                 <Input id="_IDGenInput2" 
                     
-                    value=""
+                    value="{oNewUserModel>/password}"
                 />
-                <Label id="confirmpsswrd" 
-                    
-                    text="Confirm Password "
+                <Label
+                    id="idLableusertype"
+                    text="User Type"
                 />
-                <Input id="_IDGenInput3" 
-                    
-                    value=""
+                <Input
+                    id="idInputusertype"
+                    value="{oNewUserModel>/usertype}"
                 />
             
                 

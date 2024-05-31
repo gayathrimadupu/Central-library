@@ -71,7 +71,7 @@
                 wrap="Wrap"
                 fitContainer="true"
             >
-            <!-- <m:Label
+                <!-- <m:Label
             id="idlable"
             text="Hi{username},Welcome to The Central Library"></m:Label> -->
                 <m:Avatar
@@ -94,7 +94,7 @@
                         text="+91 9876543210"
                     /> -->
                     <m:Link
-                        id="idLink2"
+                        id="idemaill"
                         text="{email}"
                     />
                 </layout:VerticalLayout>
@@ -149,7 +149,6 @@
                         <blocks>
                             <m:Table
                                 id="idUserActiveLoanTable"
-                               
                                 alternateRowColors="true"
                             >
                                 <m:headerToolbar>

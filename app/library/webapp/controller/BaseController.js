@@ -22,7 +22,6 @@ sap.ui.define([
             return oFragment
         },
         createData: async function(oModel,oPayload, sPath){
-
             return new Promise((resolve, reject) => {
             oModel.create(sPath,oPayload,{
                   //refreshAfterChange: true,

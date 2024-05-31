@@ -8,4 +8,4 @@ ISBN,title,author,quantity,genre,availability,barcode,status
 978-0307277672,The Catcher in the Rye,J.D. Salinger,7,Fiction,7,7890123456789,Available
 978-0316015844,Twilight,Stephenie Meyer,9,Fantasy,9,8901234567890,Available
 978-0385514231,Angels & Demons,Dan Brown,5,Mystery,5,9012345678901,Available
-978-0316769174,The Bell Jar,Sylvia Plath,1,Drama,1,0123456789012,Available
+978-0316769174,The Bell Jar,Sylvia Plath,0,Drama,1,0123456789012,Available
