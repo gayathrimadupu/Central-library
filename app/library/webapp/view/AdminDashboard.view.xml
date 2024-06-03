@@ -184,7 +184,7 @@ xmlns:form="sap.ui.layout.form"
                             icon="sap-icon://edit"
                             tooltip="Edit Book"
                             type="Emphasized"
-                            press="EditBook"
+                            press="onEditBtnPress"
                         />
                     <Button
                         id="BtnCreate"

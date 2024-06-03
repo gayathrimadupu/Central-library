@@ -141,6 +141,74 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
             sgenreFilterLabel  = oView.byId("idgenreFilterValue").destroyTokens()
         
          },
+         // for Editing the Book
+
+         onEditBtnPress: async function () {
+            debugger
+            var oSelected = this.byId("idBooksTable").getSelectedItem();
+            if (oSelected) {
+                var oISBN = oSelected.getBindingContext().getProperty("ISBN");
+                var oAuthorName = oSelected.getBindingContext().getProperty("author");
+                var oBookname = oSelected.getBindingContext().getProperty("title");
+                var oStock = oSelected.getBindingContext().getProperty("quantity");
+                var ogenre = oSelected.getBindingContext().getProperty("genre");
+                var oavailability = oSelected.getBindingContext().getProperty("availability");
+                var obarcode = oSelected.getBindingContext().getProperty("barcode");
+                var oStatus = oSelected.getBindingContext().getProperty("status");
+
+                var newBookModel = new sap.ui.model.json.JSONModel({
+                    ISBN:oISBN,
+                    author: oAuthorName,
+                    title: oBookname,
+                    quantity: oStock,
+                    genre: ogenre,
+                    availability: oavailability,
+                    barcode: obarcode,
+                    status: oStatus
+                });
+
+                this.getView().setModel(newBookModel, "newBookModel");
+                if (!this.oEditBooksDialog) {
+                    this.oEditBooksDialog = await this.loadFragment("EditBook"); // Load your fragment asynchronously
+                }
+                this.oEditBooksDialog.open();
+            }
+        },
+        onSave: function() {
+            var oPayload = this.getView().getModel("newBookModel").getData();
+            var oDataModel = this.getOwnerComponent().getModel("ModelV2");// Assuming this is your OData V2 model
+            console.log(oDataModel.getMetadata().getName());
+            try {
+                // Assuming your update method is provided by your OData V2 model
+                oDataModel.update("/Books(' " + oPayload.ISBN + " ')", oPayload, {
+                    success: function() {
+                        this.getView().byId("idBooksTable").getBinding("items").refresh();
+                        this.oEditBooksDialog.close();
+                    }.bind(this),
+                    error: function(oError) {
+                        this.oEditBooksDialog.close();
+                        sap.m.MessageBox.error("Failed to update book: " + oError.message);
+                    }.bind(this)
+                });
+            } catch (error) {
+                this.oEditBooksDialog.close();
+                sap.m.MessageBox.error("Some technical Issue");
+            }
+            var oDataModel = new sap.ui.model.odata.v2.ODataModel({
+                serviceUrl: "https://port4004-workspaces-ws-7vnfx.us10.trial.applicationstudio.cloud.sap/v2/BookSRV",
+                defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
+                // Configure message parser
+                messageParser: sap.ui.model.odata.ODataMessageParser
+            })  
+    },
+
+
+        onClose: function() {
+            if (this.oEditBooksDialog.isOpen()) {
+                this.oEditBooksDialog.close();
+                }
+            },
+
 
         onSelectBooks: function(oEvent) {
 

@@ -25,6 +25,7 @@ sap.ui.define([
             // this.getRouter().attachRoutePatternMatched(this.onBooksListLoad, this);
             this.getRouter().attachRoutePatternMatched(this.onUserDetailsLoad, this);
         },
+        
         onUserDetailsLoad: function (oEvent) {
             const { id } = oEvent.getParameter("arguments");
             this.ID = id;
