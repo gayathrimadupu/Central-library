@@ -4,32 +4,31 @@
     xmlns="sap.m"
 >
     <Dialog
-        id="idEditBook"
+        id="idCreateBookDialog"
         resizable="true"
         draggable="true"
         contentWidth="30%"
-        title="Edit BOOK Details"
+        title="Edit A Book"
     >
         <beginButton>
             <Button
-                id="idEditBookSave"
-                text="Save"
-                press="onSave"
+                id="idUpdateBooks"
+                text="Update"
+                press="onUpdateBook"
                 type="Success"
             />
         </beginButton>
         <endButton>
             <Button
-                id="idEditBookCancel"
+                id="idCancelBookButton"
                 text="Cancel"
-                press="onClose"
+                press="onCloseUpdateDialog"
                 type="Negative"
             />
         </endButton>
         <content>
-            <!-- form creation -->
             <form:SimpleForm
-                id="idEditBookForm"
+                id="idEmployeeDetailsForm"
                 editable="true"
                 layout="ResponsiveGridLayout"
                 labelSpanXL="3"
@@ -46,90 +45,56 @@
                 columnsM="1"
                 singleContainerFullSize="false"
             >
-             <!-- <Label
-                    id="idEditBookID"
-                    text="ID"
-                />
-                <Input
-                    id="idEditBookIDVal"
-                    editable="true"
-                    valueLiveUpdate="true"
-                    value="{newBookModel>/ID}"
-                /> -->
                 <Label
-                    id="idEditBookISBN"
+                    id="idISBNLabel"
                     text="ISBN"
                 />
                 <Input
-                    id="idEditBookISBNVal"
-                    editable="true"
-                    valueLiveUpdate="true"
+                    id="idISBNInput"
                     value="{newBookModel>/ISBN}"
                 />
                 <Label
-                    id="idEditBookTitle"
-                    text="Title"
+                    id="idBooktitleLabel"
+                    text="Book title"
                 />
                 <Input
-                    id="idEditBookTitleVal"
-                    editable="true"
-                    valueLiveUpdate="true"
+                    id="idBooktitleInput"
                     value="{newBookModel>/title}"
                 />
                 <Label
-                    id="idEditBookQty"
-                    text="Qty"
+                    id="idAuthorNameLabel"
+                    text="Author Name"
                 />
                 <Input
-                    id="idEditBookQtyVal"
-                    type="Number"
-                    editable="true"
-                    valueLiveUpdate="true"
-                    value="{newBookModel>/quantity}"
-                />
-                <!-- <Label
-                    id="idEditBookPrice"
-                    text="Price"
-                />
-                <Input
-                    id="idEditBookPriceVal"
-                    editable="true"
-                    valueLiveUpdate="true"
-                    value="{newBookModel>/price}"
-                /> -->
-                <!-- <Label
-                    id="idEditBookPages"
-                    text="Pages"
-                />
-                <Input
-                    id="idEditBookPagesVal"
-                    type="Number"
-                    editable="true"
-                    valueLiveUpdate="true"
-                    value="{newBookModel>/pages}"
-                /> -->
-                <Label
-                    id="idEditBookAuthor"
-                    text="Author"
-                />
-                <Input
-                    id="idEditBookAuthorVal"
-                    editable="true"
-                    valueLiveUpdate="true"
-                    liveChange="onEditBtnPress"
+                    id="idAuthorNameInput"
                     value="{newBookModel>/author}"
                 />
                 <Label
-                    id="idEditBookStatus"
+                    id="idGenreLabel"
+                    text="Genre"
+                />
+                <Input
+                    id="idGenreInput"
+                    value="{newBookModel>/genre}"
+                />
+                <Label
+                    id="idQuantityLabel"
+                    text="Quantity"
+                />
+                <Input
+                    id="idQuantityInput"
+                    value="{newBookModel>/quantity}"
+                />
+                   <!-- <Label
+                    id="idStatusLabel"
                     text="Status"
                 />
                 <Input
-                    id="idEditBookStatusVal"
-                    editable="true"
-                    valueLiveUpdate="true"
+                    id="idStatusInput"
                     value="{newBookModel>/status}"
-                />
+                /> -->
             </form:SimpleForm>
         </content>
     </Dialog>
 </core:FragmentDefinition>
+ 

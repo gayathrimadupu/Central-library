@@ -15,6 +15,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
     return Controller.extend("com.app.library.controller.AdminDashboard", {
         onInit: function () {
             const oLocalModel = new JSONModel({
+                
                 ISBN: "",
                 title: "", 
                 author: "",
@@ -141,71 +142,75 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
             sgenreFilterLabel  = oView.byId("idgenreFilterValue").destroyTokens()
         
          },
-         // for Editing the Book
-
-         onEditBtnPress: async function () {
-            debugger
-            var oSelected = this.byId("idBooksTable").getSelectedItem();
-            if (oSelected) {
-                var oISBN = oSelected.getBindingContext().getProperty("ISBN");
-                var oAuthorName = oSelected.getBindingContext().getProperty("author");
-                var oBookname = oSelected.getBindingContext().getProperty("title");
-                var oStock = oSelected.getBindingContext().getProperty("quantity");
-                var ogenre = oSelected.getBindingContext().getProperty("genre");
-                var oavailability = oSelected.getBindingContext().getProperty("availability");
-                var obarcode = oSelected.getBindingContext().getProperty("barcode");
-                var oStatus = oSelected.getBindingContext().getProperty("status");
-
+      
+        onEditBtnPress: async function () {
+            var oSelected = this.byId("idBooksTable").getSelectedItems();
+            if (oSelected.length > 0) {
+                // Assuming you only want to update the first selected item
+                var oItem = oSelected[0];
+       
+                var oBindingContext = oItem.getBindingContext();
+                var oID = oBindingContext.getProperty("ID");
+                var oISBN = oBindingContext.getProperty("ISBN");
+                var oTitle = oBindingContext.getProperty("title");
+                var oAuthor = oBindingContext.getProperty("author");
+                var oQuantity = oBindingContext.getProperty("quantity");
+                var oGenre = oBindingContext.getProperty("genre");
+                var oStatus = oBindingContext.getProperty("status");
+       
                 var newBookModel = new sap.ui.model.json.JSONModel({
-                    ISBN:oISBN,
-                    author: oAuthorName,
-                    title: oBookname,
-                    quantity: oStock,
-                    genre: ogenre,
-                    availability: oavailability,
-                    barcode: obarcode,
-                    status: oStatus
+                    ID:oID,
+                  //  ID: oBindingContext.getProperty("ID"), // Assuming you have an ID property
+                    author: oAuthor,
+                    title: oTitle,
+                    quantity: oQuantity,
+                    genre: oGenre,
+                    ISBN: oISBN,
+                    status:oStatus
                 });
-
                 this.getView().setModel(newBookModel, "newBookModel");
-                if (!this.oEditBooksDialog) {
-                    this.oEditBooksDialog = await this.loadFragment("EditBook"); // Load your fragment asynchronously
+       
+                if (!this.oEditBookDialog) {
+                    this.oEditBookDialog = await this.loadFragment("EditBook"); // Load your fragment asynchronously
                 }
-                this.oEditBooksDialog.open();
+       
+                this.oEditBookDialog.open();
+            } else {
+                // Handle the case when no items are selected
+                sap.m.MessageToast.show("Please select a book to update.");
             }
         },
-        onSave: function() {
+        onUpdateBook: function() {
+            debugger
             var oPayload = this.getView().getModel("newBookModel").getData();
             var oDataModel = this.getOwnerComponent().getModel("ModelV2");// Assuming this is your OData V2 model
             console.log(oDataModel.getMetadata().getName());
+       
             try {
                 // Assuming your update method is provided by your OData V2 model
-                oDataModel.update("/Books(' " + oPayload.ISBN + " ')", oPayload, {
+                oDataModel.update("/Books(" + oPayload.ID + ")", oPayload, {
                     success: function() {
                         this.getView().byId("idBooksTable").getBinding("items").refresh();
-                        this.oEditBooksDialog.close();
+                        this.oEditBookDialog.close();
                     }.bind(this),
                     error: function(oError) {
-                        this.oEditBooksDialog.close();
+                        this.oEditBookDialog.close();
                         sap.m.MessageBox.error("Failed to update book: " + oError.message);
                     }.bind(this)
                 });
             } catch (error) {
-                this.oEditBooksDialog.close();
+                this.oEditBookDialog.close();
                 sap.m.MessageBox.error("Some technical Issue");
             }
-            var oDataModel = new sap.ui.model.odata.v2.ODataModel({
-                serviceUrl: "https://port4004-workspaces-ws-7vnfx.us10.trial.applicationstudio.cloud.sap/v2/BookSRV",
-                defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
-                // Configure message parser
-                messageParser: sap.ui.model.odata.ODataMessageParser
-            })  
-    },
+       
+        },
+        
+    
 
 
-        onClose: function() {
-            if (this.oEditBooksDialog.isOpen()) {
-                this.oEditBooksDialog.close();
+    onCloseUpdateDialog: function() {
+            if (this.oEditBookDialog.isOpen()) {
+                this.oEditBookDialog.close();
                 }
             },
 
@@ -340,6 +345,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
                     oSelected = oAdminView.byId("idLoanTable").getSelectedItem()
                 if (oSelected) {
                     // var oUser = oSelected.getBindingContext().getObject().user.userName;
+                    
                     oSelected.getBindingContext().delete("$auto").then(function () {
                         MessageToast.show(" SuccessFully Deleted");
                     },

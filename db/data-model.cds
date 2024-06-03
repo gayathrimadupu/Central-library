@@ -1,8 +1,8 @@
 namespace my.bookshop;
 using {cuid} from '@sap/cds/common';
 
-entity Books  {
-  key ISBN          : String;
+entity Books : cuid {
+   ISBN          : String;
       title        : String;
       author       : String;
       quantity     : Integer;
@@ -33,4 +33,11 @@ entity Activeloans :cuid{
   bookId    : Association to Books;
   userId    : Association to Users
  }
+
+ entity Reservations : cuid {
+  ReserverdUserName : String;
+  ReserverdUserId: String;
+  ReserverdBook: String;
+
+}
 
