@@ -130,6 +130,9 @@ xmlns:form="sap.ui.layout.form"
                                 type="Emphasized"
                                 press="onGoPress"
                             />
+                            
+                            
+                    
                         </VBox>
                         <!-- another button to clear -->
                         <VBox
@@ -147,6 +150,21 @@ xmlns:form="sap.ui.layout.form"
                                 press="onClearFilterPress"
                             />
                         </VBox>
+                         <VBox
+                            id="idReserveBookButton"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="idReserveBookLabel"
+                                text=""
+                            />
+                            <Button
+                                id="idReservedButtonValue"
+                                text="Reserved Books"
+                                type="Emphasized"
+                                press="onReservedBooksPress"
+                            />
+                             </VBox>
                     </HBox>
                     </f:DynamicPageHeader>
         <Table
@@ -186,6 +204,7 @@ xmlns:form="sap.ui.layout.form"
                             type="Emphasized"
                             press="onEditBtnPress"
                         />
+                        
                     <Button
                         id="BtnCreate"
                         class="loanButton"

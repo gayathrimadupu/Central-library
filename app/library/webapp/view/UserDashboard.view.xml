@@ -62,6 +62,7 @@
                 </expandedContent>
 
                 <actions />
+                 
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
@@ -206,21 +207,22 @@
                                         <m:cells>
                                             <m:Text
                                                 id="idBookNameColValueUserLoans"
-                                                text="Book1"
+                                                text="{books/title}"
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans"
-                                                text="Scot jr"
+                                                text="{books/author}"
                                             />
                                             <m:Text
                                                 id="idISBNColValueUserLoans"
-                                                text="ISBN123"
+                                                text="{books/ISBN}"
                                             />
                                             <m:Text
                                                 id="idDueDateValueUserLoans"
-                                                text="2024-4-3"
+                                                text="{activeloans/dueDate}"
                                             />
                                         </m:cells>
+                                        
                                     </m:ColumnListItem>
                                 </m:items>
                             </m:Table>
@@ -229,5 +231,7 @@
                 </subSections>
             </ObjectPageSection>
         </sections>
+        
     </ObjectPageLayout>
+    
 </mvc:View>

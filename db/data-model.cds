@@ -12,6 +12,7 @@ entity Books : cuid {
       status : String;
       // Users : Composition of many Users on Users.Books=$self;
       activeloans:Association to  many Activeloans on activeloans.bookId=$self;
+      //user : Composition of many Users on user.books = $self;
 }
 
 entity Users {
@@ -22,9 +23,10 @@ entity Users {
       Borrowedbooks : Integer;
       Returndates   : Date;
       Notifications : Integer;
-      // activeloans:Association to Activeloans;
+      activeloans:Association to Activeloans;
       usertype : String;
       Bookloans : Association to Activeloans on Bookloans.userId =$self;
+      books :Association to Books;
       
 }
 entity Activeloans :cuid{ 

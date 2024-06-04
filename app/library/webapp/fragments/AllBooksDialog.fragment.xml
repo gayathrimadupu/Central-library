@@ -119,8 +119,7 @@
                         <Button
                             id="idReserveBookButton"
                             text="Reserve Book"
-                           
-                            press="onReserveBookPress"
+                            press="onuserReserve"
                             type="Success"
                         />
                     </OverflowToolbar>

@@ -256,6 +256,23 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
                 }
        
         },
+        onReservedBooksPress: async function () {
+            debugger
+            if (!this.oReservationsDialog) {
+                this.oReservationsDialog = await this.loadFragment("Reservations")
+                // this.oActiveLoanPopUp = await this.loadFragment("ActiveLoans")
+                // this.oNewLoanDailog = await this.loadFragment("loanCreate")
+
+            }
+            this.getView().byId("idReservationsTable").getBinding("items").refresh();
+            this.oReservationsDialog.open()
+
+        },
+        onReservationsClose: function () {
+            if (this.oReservationsDialog.isOpen()) {
+                this.oReservationsDialog.close();
+            }
+        },
     onCloseIssueDialog: function() {
         this.getView().byId("idIssueBookDialog").close();
     },

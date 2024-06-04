@@ -147,21 +147,44 @@ sap.ui.define([
             }
             this.oAllBooksDialog.open();
         },
-        onReserveBookPress: function () {
+        
+       
+        onuserReserve: async function () {
             debugger
-            MessageToast.show("Please select a book to reserve.");
-            var oSelectedBook = this.getView().byId("idBooksTable").getSelectedItem();
-            if (oSelectedBook) {
-                var title = oSelectedBook.getBindingContext().getObject().title;
-                var bookStatus = oSelectedBook.getBindingContext().getObject().status;
-                if (bookStatus === "Reserved") {
-                    MessageToast.show("The book" + title + "is already Reserved.");
-                } else {
-                    MessageToast.show("You have successfully reserved the book" + title + ".");
-                }
+            const oView = this.getView()
+            var oSelected = this.byId("idBooksTable").getSelectedItem(),
+            oAvailQuan = oSelected.getBindingContext().getObject().quantity
+            if (oSelected) {
+                // var oStock = oSelected.getBindingContext().getObject().quantity
+                var oAvailQuan = oSelected.getBindingContext().getObject().quantity;
+                 var oBookName = oSelected.getBindingContext().getObject().title;
+                 var oUser = oView.byId("idTextUserName").getText();
+                var  oUserId = oView.byId("idemaill").getText();
+                
+                if(oAvailQuan == 0){
+                    
+                    const oBinding = oView.getModel().bindList("/Reservations")
+                    oBinding.create({
+                        ReserverdUserName:oUser,
+                        ReserverdUserId:oUserId,
+                        ReserverdBook:oBookName
 
+                    })
+
+                    MessageToast.show("Reservation Sent to Admin")
+                }
+                else{
+                    MessageToast.show("Book is available you don't need to reserve")
+                }
             }
         },
+        onLogoutPress: function () {
+            debugger
+            const oRouter = this.getOwnerComponent().getRouter()
+            oRouter.navTo("RouteloginView")
+
+        },
+       
             // var selectedBook = this.getView().byId("idBooksTable").getSelectedItem();
             // if (!selectedBook) {
             //     MessageToast.show("Please select a book to reserve.");
