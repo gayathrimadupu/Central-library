@@ -153,10 +153,10 @@ sap.ui.define([
             debugger
             const oView = this.getView()
             var oSelected = this.byId("idBooksTable").getSelectedItem(),
-            oAvailQuan = oSelected.getBindingContext().getObject().quantity
+            oAvailQuan = oSelected.getBindingContext().getObject().availability
             if (oSelected) {
                 // var oStock = oSelected.getBindingContext().getObject().quantity
-                var oAvailQuan = oSelected.getBindingContext().getObject().quantity;
+                var oAvailQuan = oSelected.getBindingContext().getObject().availability;
                  var oBookName = oSelected.getBindingContext().getObject().title;
                  var oUser = oView.byId("idTextUserName").getText();
                 var  oUserId = oView.byId("idemaill").getText();

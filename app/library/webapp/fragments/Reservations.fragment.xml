@@ -14,6 +14,7 @@
         <content>
                         <!-- items="{/Reservations}" -->
             <Table
+            mode="MultiSelect"
                 id="idReservationsTable"
                 inset="false"
                 items="{/Reservations}"
@@ -25,6 +26,7 @@
                             text="All Reservations"
                         />
                         <ToolbarSpacer id="idReservationsSpacer" />
+                        
                         <!-- <Button
                             id="idReservationsAddButton"
                             text="Add"

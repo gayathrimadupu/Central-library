@@ -8,4 +8,4 @@ ID,ISBN,title,author,quantity,genre,availability,barcode,status
 9fa94296-2176-11ef-991e-325096b39f47,978-0307277672,The Catcher in the Rye,J.D. Salinger,7,Fiction,7,7890123456789,Available 
 9fa942dc-2176-11ef-85dd-325096b39f47,978-0316015844,Twilight,Stephenie Meyer,9,Fantasy,9,8901234567890,Available 
 9fa94322-2176-11ef-9bd2-325096b39f47,978-0385514231,Angels & Demons,Dan Brown,5,Mystery,5,9012345678901,Available 
-9fa94368-2176-11ef-92e9-325096b39f47,978-0316769174,The Bell Jar,Sylvia Plath,0,Drama,1,0123456789012,Availabl
+9fa94368-2176-11ef-92e9-325096b39f47,978-0316769174,The Bell Jar,Sylvia Plath,1,Drama,0,0123456789012,Availabl

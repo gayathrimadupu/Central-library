@@ -155,12 +155,12 @@
                             text="Genre"
                         />
                     </Column>
-                    <Column id="idStatusCol">
+                    <!-- <Column id="idStatusCol">
                         <Title
                             id="idStatusColISBN"
                             text="Status"
                         />
-                    </Column>
+                    </Column> -->
                     <!-- <Column id="_IDGenColumn1">
                         <Title
                             id="_IDGenISBN1"
@@ -191,7 +191,7 @@
                             />
                             <Text
                                 id="_IDGenText4"
-                                text="{quantity}"
+                                text="{availability}"
                             />
                             <Text
                                 id="_IDGenText5"

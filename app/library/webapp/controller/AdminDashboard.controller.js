@@ -343,6 +343,7 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
         },
         onSaveNewLoan: function () {
             debugger
+            // var oModel = this.getView().getModel("ModelV2")
             var oContext = this.getView().byId("idLoanTable").getBinding("items")
             var oNewLoan = this.getView().getModel("newLoanModel").getData();
             oContext.create(oNewLoan, {
@@ -355,7 +356,66 @@ function (Controller, Filter, FilterOperator, Token, JSONModel, MessageBox,Messa
             });
             this.oNewLoanDailog.close()
 
-        },
+         },
+     
+        // onSaveNewLoan: async function () {
+        //     try {
+        //         debugger;
+        //         var oModel = this.getView().getModel("ModelV2"),
+        //             oNewLoan = this.getView().getModel("newLoanModel").getData(),
+        //             sEnteredUserId = oNewLoan.userId.username,
+        //             sBookName = oNewLoan.bookId.title;
+        
+        //         if (sEnteredUserId && sBookName) {
+        //             // Check if the user exists
+        //             var oUserListBinding = oModel.bindList("/Users");
+        //             oUserListBinding.filter(new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, sEnteredUserId));
+        //             var aUserContexts = await oUserListBinding.requestContexts();
+        
+        //             if (aUserContexts.length > 0) {
+        //                 // Check if the book exists and is available
+        //                 var oBookListBinding = oModel.bindList("/Books");
+        //                 oBookListBinding.filter(new sap.ui.model.Filter("title", sap.ui.model.FilterOperator.EQ, sBookName));
+        //                 var aBookContexts = await oBookListBinding.requestContexts();
+        
+        //                 if (aBookContexts.length > 0) {
+        //                     var oBookContext = aBookContexts[0],
+        //                         oBookData = oBookContext.getObject();
+        
+        //                     if (oBookData.availability > 0) {
+        //                         oBookData.availability -= 1; // Decrement book availability
+        
+        //                         // Update book availability
+        //                         oBookContext.setProperty("availability", oBookData.availability);
+        //                         await oModel.submitBatch("updateGroup");
+        
+        //                         // Create new loan
+        //                         await oModel.create("/Activeloans", oNewLoan, { groupId: "createGroup" });
+        //                         await oModel.submitBatch("createGroup");
+        
+        //                         sap.m.MessageToast.show("Book issued successfully");
+        //                     } else {
+        //                         sap.m.MessageToast.show("Book not available");
+        //                     }
+        //                 } else {
+        //                     sap.m.MessageToast.show("Book not found");
+        //                 }
+        //             } else {
+        //                 sap.m.MessageToast.show("User not found");
+        //             }
+        
+        //             this.oNewLoanDailog.close();
+        //             this.oActiveLoansDialog.close();
+        //         } else {
+        //             sap.m.MessageToast.show("Enter correct user data to continue");
+        //         }
+        //     } catch (error) {
+        //         sap.m.MessageToast.show("An error occurred: " + error.message);
+        //     }
+        // },
+        
+        
+        
         OnCloseLOanPress:function(){
                 debugger
                 const oAdminView = this.getView(),
